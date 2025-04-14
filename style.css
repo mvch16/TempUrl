@@ -1,0 +1,154 @@
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+    background-color: #f5f5f5;
+    color: #333;
+  }
+  
+  .container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    color: #2c3e50;
+    text-align: center;
+  }
+  
+  textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    min-height: 100px;
+    resize: vertical;
+  }
+  
+  button {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+  }
+  
+  button:hover {
+    background: #2980b9;
+  }
+  
+  #url {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  #mensaje {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 4px;
+    text-align: center;
+  }
+  
+  .success {
+    background-color: #d4edda;
+    color: #155724;
+  }
+  
+  .error {
+    background-color: #f8d7da;
+    color: #721c24;
+  }
+
+  /* Estilos para la sección de donaciones */
+.donacion-box {
+    margin-top: 30px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid #e9ecef;
+  }
+  
+  .donacion-box h3 {
+    margin-top: 0;
+    color: #2c3e50;
+  }
+  
+  .metodos-pago {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .donar-btn {
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    border: none;
+  }
+  
+  .paypal {
+    background: #009cde;
+  }
+  
+  .crypto {
+    background: #f7931a;
+  }
+  
+  .custom-amount {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 10px;
+  }
+  
+  .custom-amount input {
+    width: 60px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  #copiar-wallet {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  #cripto-popup {
+    margin-top: 10px;
+    padding: 10px;
+    background: #fff;
+    border-radius: 5px;
+    border: 1px dashed #ccc;
+  }
+  
+  #wallet-address {
+    width: 100%;
+    padding: 5px;
+    margin: 5px 0;
+    text-align: center;
+  }

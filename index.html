@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TempURL - Enlaces autodestructivos</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>TempURL</h1>
+      <p>Crea enlaces que se autodestruyen después de ser usados.</p>
+
+      <textarea
+        id="texto"
+        placeholder="Escribe tu mensaje secreto..."
+      ></textarea>
+      <!-- Dentro del div.container, después del textarea -->
+      <label for="tiempo">Tiempo de vida:</label>
+      <select id="tiempo">
+        <option value="1">1 minutos</option>
+        <option value="5">5 minutos</option>
+        <option value="10">10 minutos</option>
+        <option value="30">30 minutos</option>
+        <option value="60">1 hora</option>
+      </select>
+      <button id="generar">Generar Enlace</button>
+
+      <div id="resultado" class="hidden">
+        <p>¡Listo! Copia este enlace y compártelo:</p>
+        <input type="text" id="url" readonly />
+        <button id="copiar">Copiar</button>
+      </div>
+
+      <div id="mensaje" class="hidden"></div>
+    </div>
+    <div id="donaciones" class="donacion-box">
+      <h3>¿Te gusta TempURL?</h3>
+      <p>¡Apoya el proyecto con lo que quieras!</p>
+
+      <div class="metodos-pago">
+        <!-- PayPal -->
+        <a
+          href="https://paypal.me/MVCoding"
+          target="_blank"
+          class="donar-btn paypal"
+        >
+          PayPal
+        </a>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
