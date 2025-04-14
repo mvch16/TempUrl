@@ -104,17 +104,17 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-document.getElementById('copiar').addEventListener('click', async () => {
-  const urlInput = document.getElementById('url');
+document.getElementById("copiar").addEventListener("click", async () => {
+  const urlInput = document.getElementById("url");
   urlInput.select();
-  
+
   try {
     await navigator.clipboard.writeText(urlInput.value);
-    mostrarMensaje('¡Enlace copiado al portapeles!', 'success');
+    mostrarMensaje("¡Enlace copiado al portapeles!", "success");
   } catch (error) {
     // Fallback para navegadores antiguos
-    document.execCommand('copy');
-    mostrarMensaje('Copiado (método antiguo).', 'success');
+    document.execCommand("copy");
+    mostrarMensaje("Copiado (método antiguo).", "success");
   }
 });
 
@@ -147,3 +147,28 @@ document.getElementById("donar-custom").addEventListener("click", () => {
     window.open(paypalUrl, "_blank");
   }, 2000);
 });
+
+// Cargar idioma guardado o usar el del navegador
+let currentLang =
+  localStorage.getItem("lang") || navigator.language.split("-")[0] || "es";
+
+// Actualizar la interfaz
+function updateLanguage() {
+  const t = translations[currentLang];
+  document.querySelector("title").textContent = t.title;
+  document
+    .querySelector('meta[name="description"]')
+    .setAttribute("content", t.description);
+  document.getElementById("texto").placeholder = t.placeholder;
+  // ... actualizar todos los textos
+}
+
+// Evento para cambiar idioma
+document.getElementById("language-select").addEventListener("change", (e) => {
+  currentLang = e.target.value;
+  localStorage.setItem("lang", currentLang);
+  updateLanguage();
+});
+
+// Inicializar
+updateLanguage();
