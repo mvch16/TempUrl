@@ -118,57 +118,135 @@ document.getElementById("copiar").addEventListener("click", async () => {
   }
 });
 
-// Donaciones - Lógica
-document.getElementById("mostrar-cripto").addEventListener("click", () => {
-  document.getElementById("cripto-popup").classList.toggle("hidden");
-});
 
-document.getElementById("copiar-wallet").addEventListener("click", () => {
-  const wallet = document.getElementById("wallet-address");
-  wallet.select();
-  document.execCommand("copy");
-  mostrarMensaje("¡Dirección copiada!", "success");
-});
-
-// Donación personalizada (simulación)
-document.getElementById("donar-custom").addEventListener("click", () => {
-  const monto = document.getElementById("monto").value;
-  if (!monto || monto < 1) {
-    mostrarMensaje("Ingresa un monto válido.", "error");
-    return;
+const translations = {
+  es: {
+    // Meta tags
+    title: "TempURL - Enlaces autodestructivos seguros",
+    description: "Crea enlaces temporales que se autodestruyen después de un solo uso. Comparte información sensible de forma privada.",
+    
+    // Interfaz
+    header: "Crea un enlace temporal",
+    placeholder: "Escribe tu mensaje secreto...",
+    generateBtn: "Generar Enlace",
+    timeLabel: "Tiempo de vida:",
+    timeOptions: {
+      "1": "1 minuto",
+      "5": "5 minutos",
+      "10": "10 minutos",
+      "30": "30 minutos",
+      "60": "1 hora"
+    },
+    resultText: "¡Listo! Copia este enlace:",
+    copyBtn: "Copiar",
+    donationText: "¿Te gusta TempURL? ¡Apoya el proyecto!",
+    
+    // Mensajes
+    successGenerate: "Enlace generado con éxito.",
+    errorEmpty: "Por favor, escribe un mensaje.",
+    copied: "¡Enlace copiado!",
+    expired: "⚠️ Este enlace ha expirado."
+  },
+  en: {
+    title: "TempURL - Secure Self-Destructing Links",
+    description: "Create temporary links that disappear after one use. Share sensitive information privately.",
+    header: "Create a temporary link",
+    placeholder: "Type your secret message...",
+    generateBtn: "Generate Link",
+    timeLabel: "Lifetime:",
+    timeOptions: {
+      "1": "1 minute",
+      "5": "5 minutes",
+      "10": "10 minutes",
+      "30": "30 minutes",
+      "60": "1 hour"
+    },
+    resultText: "Done! Copy this link:",
+    copyBtn: "Copy",
+    donationText: "Like TempURL? Support the project!",
+    successGenerate: "Link generated successfully.",
+    errorEmpty: "Please enter a message.",
+    copied: "Link copied!",
+    expired: "⚠️ This link has expired."
+  },
+  fr: {
+    title: "TempURL - Liens autodestructeurs sécurisés",
+    description: "Créez des liens temporaires qui disparaissent après utilisation. Partagez des informations sensibles en privé.",
+    header: "Créer un lien temporaire",
+    placeholder: "Écrivez votre message secret...",
+    generateBtn: "Générer le Lien",
+    timeLabel: "Durée de vie:",
+    timeOptions: {
+      "1": "1 minute",
+      "5": "5 minutes",
+      "10": "10 minutes",
+      "30": "30 minutes",
+      "60": "1 heure"
+    },
+    resultText: "Terminé ! Copiez ce lien :",
+    copyBtn: "Copier",
+    donationText: "Vous aimez TempURL ? Soutenez le projet !",
+    successGenerate: "Lien généré avec succès.",
+    errorEmpty: "Veuillez écrire un message.",
+    copied: "Lien copié !",
+    expired: "⚠️ Ce lien a expiré."
   }
+};
 
-  // Simular redirección a PayPal con monto personalizado
-  const paypalUrl = `https://paypal.me/tuusuario/${monto}USD`;
-  mostrarMensaje(`Redirigiendo a PayPal para donar $${monto}...`, "success");
-
-  // Abrir en nueva pestaña después de 2 segundos (para UX)
-  setTimeout(() => {
-    window.open(paypalUrl, "_blank");
-  }, 2000);
-});
 
 // Cargar idioma guardado o usar el del navegador
-let currentLang =
-  localStorage.getItem("lang") || navigator.language.split("-")[0] || "es";
+let currentLang = localStorage.getItem('lang') || navigator.language.split('-')[0] || 'en';
 
-// Actualizar la interfaz
-function updateLanguage() {
-  const t = translations[currentLang];
-  document.querySelector("title").textContent = t.title;
-  document
-    .querySelector('meta[name="description"]')
-    .setAttribute("content", t.description);
-  document.getElementById("texto").placeholder = t.placeholder;
-  // ... actualizar todos los textos
-}
-
-// Evento para cambiar idioma
-document.getElementById("language-select").addEventListener("change", (e) => {
+// Selector de idioma en HTML
+document.getElementById('language-select').addEventListener('change', (e) => {
   currentLang = e.target.value;
-  localStorage.setItem("lang", currentLang);
+  localStorage.setItem('lang', currentLang);
   updateLanguage();
 });
 
-// Inicializar
-updateLanguage();
+document.addEventListener('DOMContentLoaded', () => {
+  // Configurar el selector
+  document.getElementById('language-select').value = currentLang;
+  updateLanguage();
+});
+
+// Actualizar la interfaz
+function updateLanguage() {
+  const lang = currentLang in translations ? currentLang : 'en';
+  const t = translations[lang];
+
+  // Actualizar meta tags (SEO)
+  document.title = t.title;
+  document.querySelector('meta[name="description"]').setAttribute('content', t.description);
+  document.querySelector('meta[property="og:title"]').setAttribute('content', t.title);
+  document.querySelector('meta[property="og:description"]').setAttribute('content', t.description);
+
+  // Actualizar interfaz
+  document.getElementById('texto').placeholder = t.placeholder;
+  document.getElementById('generar').textContent = t.generateBtn;
+  document.querySelector('label[for="tiempo"]').textContent = t.timeLabel;
+  document.getElementById('copiar').textContent = t.copyBtn;
+  document.getElementById('description').textContent = t.description;
+  document.getElementById('resultText').textContent = t.resultText;
+  document.getElementById('donationText').textContent = t.donationText;
+  
+
+  // Actualizar opciones de tiempo
+  const selectTiempo = document.getElementById('tiempo');
+  Array.from(selectTiempo.options).forEach(option => {
+    option.textContent = t.timeOptions[option.value];
+  });
+
+  // Actualizar textos dinámicos (ej. mensajes de error)
+  window.messages = {
+    successGenerate: t.successGenerate,
+    errorEmpty: t.errorEmpty,
+    copied: t.copied,
+    expired: t.expired
+  };
+
+  // Actualizar dirección del texto (para árabe/hebreo)
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+}
+

@@ -42,7 +42,7 @@
     </div>
     <div class="container">
       <h1>TempURL</h1>
-      <p>Crea enlaces que se autodestruyen después de ser usados.</p>
+      <p id="description">Crea enlaces que se autodestruyen después de ser usados.</p>
 
       <textarea
         id="texto"
@@ -60,7 +60,7 @@
       <button id="generar">Generar Enlace</button>
 
       <div id="resultado" class="hidden">
-        <p>¡Listo! Copia este enlace y compártelo:</p>
+        <p id="resultText">¡Listo! Copia este enlace y compártelo:</p>
         <input type="text" id="url" readonly />
         <button id="copiar">Copiar</button>
       </div>
@@ -68,8 +68,7 @@
       <div id="mensaje" class="hidden"></div>
     </div>
     <div id="donaciones" class="donacion-box">
-      <h3>¿Te gusta TempURL?</h3>
-      <p>¡Apoya el proyecto con lo que quieras!</p>
+      <h3 id ="donationText">¿Te gusta TempURL? ¡Apoya el proyecto con lo que quieras!</h3>
 
       <div class="metodos-pago">
         <!-- PayPal -->
