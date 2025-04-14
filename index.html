@@ -6,69 +6,92 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Crea enlaces temporales que se autodestruyen después de un solo uso. Comparte información sensible de forma segura."
+      content="Create temporary links that disappear after one use. Share sensitive information privately."
     />
     <meta
       name="keywords"
-      content="enlace temporal, autodestrucción, compartir seguro, privacidad"
+      content="self-destructing links, temporary URL generator, secure sharing"
     />
     <meta name="author" content="mvch16" />
-    <title>TempURL - Enlaces autodestructivos seguros</title>
+    <title>TTempURL - Secure Self-Destructing Links</title>
 
     <!-- Open Graph (para redes sociales) -->
     <meta
       property="og:title"
-      content="TempURL - Enlaces que se autodestruyen"
+      content="TempURL - Secure Self-Destructing Links"
     />
     <meta
       property="og:description"
-      content="Comparte secretos, contraseñas o mensajes con enlaces de un solo uso."
+      content="Create temporary links that disappear after one use. Share sensitive information privately."
     />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://tempurl.tudominio.com" />
+    <meta property="og:url" content="https://mvch16.github.io/TempUrl/" />
     <meta
       property="og:image"
-      content="https://tempurl.tudominio.com/logo.png"
+      content="https://mvch16.github.io/TempUrl/"
     />
-    <title>TempURL - Enlaces autodestructivos</title>
+    <title>TempURL - Secure Self-Destructing Links</title>
     <link rel="stylesheet" href="style.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "TempURL",
+        "description": "Free self-destructing link generator for secure sharing",
+        "keywords": [
+          "self-destructing links",
+          "temporary URLs",
+          "secure sharing"
+        ],
+        "applicationCategory": "SecurityApplication"
+      }
+    </script>
   </head>
   <body>
-    <div class="language-switcher">
-      <select id="language-select">
-        <option value="es">Español</option>
-        <option value="en">English</option>
-      </select>
+    <div class="hidden-seo-content" aria-hidden="true">
+      <h1>Self-Destructing Links</h1>
+      <p>
+        Create secure, one-time use temporary URLs that disappear after access.
+        Perfect for sharing private messages, passwords, or sensitive files.
+      </p>
+      <p>
+        TempURL is the best free tool for generating expiring links with
+        end-to-end encryption.
+      </p>
     </div>
     <div class="container">
       <h1>TempURL</h1>
-      <p id="description">Crea enlaces que se autodestruyen después de ser usados.</p>
+      <p id="description">
+        Create temporary links that disappear after one use. Share sensitive information privately.
+      </p>
 
       <textarea
         id="texto"
-        placeholder="Escribe tu mensaje secreto..."
+        placeholder="Type your secret message..."
       ></textarea>
       <!-- Dentro del div.container, después del textarea -->
-      <label for="tiempo">Tiempo de vida:</label>
+      <label for="tiempo">Lifetime:</label>
       <select id="tiempo">
-        <option value="1">1 minutos</option>
-        <option value="5">5 minutos</option>
-        <option value="10">10 minutos</option>
-        <option value="30">30 minutos</option>
-        <option value="60">1 hora</option>
+        <option value="1">1 minutes</option>
+        <option value="5">5 minutes</option>
+        <option value="10">10 minutes</option>
+        <option value="30">30 minutes</option>
+        <option value="60">1 minutes</option>
       </select>
-      <button id="generar">Generar Enlace</button>
+      <button id="generar">Generate Link</button>
 
       <div id="resultado" class="hidden">
-        <p id="resultText">¡Listo! Copia este enlace y compártelo:</p>
+        <p id="resultText">Done! Copy this link:</p>
         <input type="text" id="url" readonly />
-        <button id="copiar">Copiar</button>
+        <button id="copiar">Copy</button>
       </div>
 
       <div id="mensaje" class="hidden"></div>
     </div>
     <div id="donaciones" class="donacion-box">
-      <h3 id ="donationText">¿Te gusta TempURL? ¡Apoya el proyecto con lo que quieras!</h3>
+      <h3 id="donationText">
+        Like TempURL? Support the project!
+      </h3>
 
       <div class="metodos-pago">
         <!-- PayPal -->
